@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap");
+
+:root {
+    --primary-family: "Zen Dots", cursive;
+
+    /* COLORS */
+    --main-btn-color: #bb3131;
+    --grass-color: rgb(20, 99, 20);
+
+    /* VALUE */
+    --turn-value: 10px;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-family);
+    color: #fff;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper__game-start {
+    width: 240px;
+    text-align: center;
+    position: relative;
+}
+
+/* .wrapper__game-start::before{
+  content: 'START GAME';
+  opacity: 0.15;
+  font-size: 60px;
+  position: absolute;
+  font-weight: 900;
+  top:0;
+  left: 0;
+} */
+
+.header__game-start {
+    letter-spacing: 1.5px;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.btn__game-start {
+    font-family: var(--primary-family);
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn__game-start:hover {
+    color: var(--main-btn-color);
+    transform: scale(1.1);
+}
+
+/* GAME BOARD */
+
+.game-board {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: var(--grass-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.roadway {
+    width: 700px;
+    height: 100vh;
+    background-color: #000;
+    position: relative;
+}
+
+.roadway::before,
+.roadway::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: rgb(131, 131, 131);
+}
+
+.roadway::before {
+    left: 0;
+}
+
+.roadway::after {
+    right: 0;
+}
+
+.double-solid-line {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+}
+
+.double-solid-line::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.broken-line {
+    height: 100vh;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.broken-line.left-road {
+    left: 25%;
+}
+
+.broken-line.right-road {
+    left: 75%;
+}
+
+/* PLAYER CAR */
+.car {
+    position: fixed; 
+    width: 150px;
+    height: 150px;
+    background-image: url("../img/Car.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    left: 0;
+    bottom: 0;
+    transition: transform 0.2s ease;
+    transform-origin: center 0px;
+    background-color: rgba(255, 255, 255, 0.034);
+}
+
+.ride {
+    animation: ride-car 0.5s infinite;
+}
+
+@keyframes ride-car {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.008);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.turn-left {
+    transform: rotate(-10deg);
+}
+
+.turn-right {
+    transform: rotate(10deg);
+}
+
+.other-car {
+    width: 150px;
+    height: 150px;
+    background-image: url("../img/Mini_truck.png");
+    background-size: cover;
+    transform: rotate(180deg);
+    background-color: rgba(255, 255, 255, 0.021);
+    top: 0;
+    position: absolute;
+}
+
+.hide {
+    display: none;
+}
