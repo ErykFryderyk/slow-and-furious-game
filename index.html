@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Car Race Game</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./src/style/style.css" />
+  </head>
+
+  <body>
+    <main>
+      <div class="container hide">
+        <div class="wrapper__game-start">
+          <h1 class="header__game-start">SLOW and FURIOUS</h1>
+          <button class="btn__game-start">Start</button>
+        </div>
+      </div>
+
+      <div class="game-board">
+        <div class="roadway" data-roadway>
+          <div class="double-solid-line"></div>
+          <div class="broken-line left-road"></div>
+          <div class="broken-line right-road"></div>
+          <div class="other-car"></div>
+          <div class="car" data-car></div>
+        </div>
+      </div>
+    </main>
+    <script src="./src/script/Game.js" type="module"></script>
+  </body>
+</html>
