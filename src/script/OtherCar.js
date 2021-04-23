@@ -1,20 +1,24 @@
 export class OtherCar {
-    container(container, otherCarClass){
+    constructor(container, otherCarClass){
         this.container = container;
         this.otherCarClass = otherCarClass;
         this.element = document.createElement('div');
     }
     
     init(){
-        this.#setCar();
+        this.setCar();
     }
     
-    #setCar(){
-        this.element.className.add('other-car');
+    setCar(){
+        this.element.classList.add(this.otherCarClass);
+        this.element.style.top = '0px';
+        this.element.style.left = `${this.#randomDrivingCarPosition()}px`;
+        this.container.appendChild(this.element);
+
     }
 
     #randomDrivingCarPosition(){
-        return Math.floor(Math.random() * this.container.innerWidth - this.element.offsetWidth);
+        return Math.floor(Math.random() * window.innerWidth - this.element.offsetWidth);
     }
 }
 
