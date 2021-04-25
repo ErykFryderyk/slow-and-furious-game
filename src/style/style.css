@@ -132,6 +132,16 @@ body {
     height: 100vh;
     position: absolute;
     transform: translate(-50%);
+    width: 2px;
+    overflow: hidden;
+}
+
+.broken-line div{
+    animation: anim 1s infinite linear;
+    background-color: #fff;
+    width: 2px;
+    height: 100px;
+    margin-bottom: 50px;
 }
 
 .broken-line.left-road {
@@ -140,6 +150,15 @@ body {
 
 .broken-line.right-road {
     left: 75%;
+}
+
+@keyframes anim{
+    0%{
+        transform: translateY(-300px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
 }
 
 /* PLAYER CAR */
@@ -152,13 +171,14 @@ body {
     background-size: cover;
     left: 0;
     bottom: 0;
-    transition: transform 0.2s ease;
+    transition: transform .2s ease;
     transform-origin: center;
-    background-color: rgba(255, 255, 255, 0.034);
+    /* background-color: rgba(255, 255, 255, 0.034); */
+    z-index: 1;
 }
 
 .ride {
-    animation: ride-car 0.5s infinite;
+    animation: ride-car .8s infinite;
 }
 
 @keyframes ride-car {
@@ -167,7 +187,7 @@ body {
     }
 
     50% {
-        transform: scale(1.008);
+        transform: scale(1.08);
     }
 
     100% {
@@ -186,12 +206,18 @@ body {
 .other-car {
     width: 150px;
     height: 150px;
-    background-image: url("../img/Mini_truck.png");
     background-size: cover;
     transform: rotate(180deg);
-    background-color: rgba(255, 255, 255, 0.021);
+    /* background-color: rgba(255, 255, 255, 0.021); */
     top: 0;
     position: fixed;
+}
+
+.pickup{
+    background-image: url("../img/Mini_truck.png");
+}
+.van{
+    background-image: url("../img/Mini_van.png");
 }
 
 .hide {
