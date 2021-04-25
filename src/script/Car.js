@@ -12,15 +12,16 @@ export class Car {
     this.#eventListeners();
     this.#gameLoop();
   }
-
+  
   #setPosition(){
-      this.element.style.bottom = '1px';
-      this.element.style.left = `${
-        window.innerWidth / 2 - this.#getPosition()
+    this.element.style.bottom = '1px';
+    this.element.style.left = `${
+      window.innerWidth / 2 - this.#getPosition()
     }px`;
   }
-
+  
   #getPosition(){
+    
       return this.element.offsetLeft + this.element.offsetWidth / 2;
   }
 
@@ -51,8 +52,8 @@ export class Car {
   }
 
   #gameLoop = () =>{
-    this.#whatKey();
-      requestAnimationFrame(this.#gameLoop)
+      this.#whatKey();
+      requestAnimationFrame(this.#gameLoop);
   }
   #whatKey(){
       if (this.#leftArrow &&
