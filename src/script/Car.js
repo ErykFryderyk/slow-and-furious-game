@@ -1,12 +1,19 @@
 export class Car {
-    #modifier = 5;
-    #leftArrow = false;
-    #rightArrow = false;
+  constructor(element, gameArea){
+      this.element = element;
+      this.gameArea = gameArea;
+  } 
 
-    constructor(element, gameArea){
-        this.element = element;
-        this.gameArea = gameArea;
-    }
+  #modifier = 5;
+  #leftArrow = false;
+  #rightArrow = false;
+  playerPosition = {
+    top: null,
+    left: null,
+    bottom: null,
+    right: null,
+  };
+    
   init() {
     this.#setPosition();
     this.#eventListeners();
@@ -21,34 +28,40 @@ export class Car {
   }
   
   #getPosition(){
-    
-      return this.element.offsetLeft + this.element.offsetWidth / 2;
+    return this.element.offsetLeft + this.element.offsetWidth / 2;
   }
-
+  
   #eventListeners(){
-      window.addEventListener('keydown', ({keyCode}) => {
-          switch(keyCode){
-            case 37:
-                this.#leftArrow = true;
-                this.element.classList.add('turn-left');
-            break;
-            case 39:
-                this.#rightArrow = true;
-                this.element.classList.add('turn-right');
-          }
-      });
-      window.addEventListener('keyup', ({keyCode}) => {
-          switch(keyCode){
-            case 37:
-                this.#leftArrow = false;
-                this.element.classList.remove('turn-left');
-            break;
-            case 39:
-                this.#rightArrow = false;
-                this.element.classList.remove('turn-right');
-            break;
-          }
-      });
+    window.addEventListener('keydown', ({keyCode}) => {
+      switch(keyCode){
+        case 37:
+          this.#leftArrow = true;
+          this.element.classList.add('turn-left');
+          break;
+        case 39:
+          this.#rightArrow = true;
+          this.element.classList.add('turn-right');
+          break;
+      }
+      this.playerPosition.left = this.element.offsetLeft;
+      this.playerPosition.right = this.element.offsetLeft + this.element.offsetWidth;
+      this.playerPosition.top = this.element.offsetTop;
+      this.playerPosition.bottom = this.element.offsetTop + this.element.offsetHeight;
+      console.log(this.playerPosition.left);
+      console.log(this.playerPosition.right);
+    });
+    window.addEventListener('keyup', ({keyCode}) => {
+      switch(keyCode){
+        case 37:
+          this.#leftArrow = false;
+          this.element.classList.remove('turn-left');
+        break;
+        case 39:
+          this.#rightArrow = false;
+          this.element.classList.remove('turn-right');
+         break;
+      }
+    });
   }
 
   #gameLoop = () =>{
@@ -56,18 +69,17 @@ export class Car {
       requestAnimationFrame(this.#gameLoop);
   }
   #whatKey(){
-      if (this.#leftArrow &&
-            this.#getPosition() >
-            (this.gameArea.getBoundingClientRect().left + 40)){
-        this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier
-        }px`;
-      }
-      if (this.#rightArrow && 
-        this.#getPosition() < 
-        (this.gameArea.getBoundingClientRect().right - 40))
+      if (
+        this.#leftArrow &&
+        this.#getPosition() > (this.gameArea.getBoundingClientRect().left + 40))
         {
-        this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier
-        }px`;
-      }
+          this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier}px`;
+        }
+      if (
+        this.#rightArrow && 
+        this.#getPosition() < (this.gameArea.getBoundingClientRect().right - 40))
+        {
+          this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier}px`;
+        }
   }
 }
