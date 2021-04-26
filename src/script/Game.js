@@ -10,6 +10,7 @@ class Game {
     this.#htmlElements.car, 
     this.#htmlElements.roadway
   );
+
   #cars = [];
   #otherCarsInterval = null;
   #checkPositionInterval = null;
@@ -30,6 +31,7 @@ class Game {
 
   #randomNewOtherCar(){
     const randomNumber = Math.floor(Math.random() * 5) + 1
+
     randomNumber % 5 
     ? this.#createNewOtherCar(
         this.#htmlElements.roadway,
@@ -68,8 +70,15 @@ class Game {
         carsArr.splice(carIndex, 1);
         this.#carSpeed;
         this.#intervalValue--;
-        console.log(this.#intervalValue);
       }
+      if(
+        this.#car.playerPosition.bottom >= carPosition.top && 
+        this.#car.playerPosition.top <= carPosition.bottom &&
+        this.#car.playerPosition.right >= carPosition.left &&
+        this.#car.playerPosition.left <= carPosition.right){
+          car.remove();
+          carsArr.splice(carIndex, 1);
+        }
     })
   }
 }
