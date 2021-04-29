@@ -16,7 +16,7 @@ class Game {
   #checkPositionInterval = null;
   #createOtherCarInterval = null;
   #carSpeed = 5;
-  #intervalValue = 1000;
+  #intervalValue = 1500;
 
   init() {
     this.#car.init();
@@ -30,7 +30,7 @@ class Game {
   }
 
   #randomNewOtherCar(){
-    const randomNumber = Math.floor(Math.random() * 5) + 1
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
 
     randomNumber % 5 
     ? this.#createNewOtherCar(
@@ -68,8 +68,8 @@ class Game {
       if(carPosition.top > window.innerHeight){
         car.remove();
         carsArr.splice(carIndex, 1);
-        this.#carSpeed;
-        this.#intervalValue--;
+        this.#carSpeed += 0.2;
+        console.log(this.#carSpeed);
       }
       if(
         this.#car.playerPosition.bottom >= carPosition.top && 
