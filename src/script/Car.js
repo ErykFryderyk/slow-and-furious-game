@@ -47,8 +47,6 @@ export class Car {
       this.playerPosition.right = this.element.offsetLeft + this.element.offsetWidth;
       this.playerPosition.top = this.element.offsetTop;
       this.playerPosition.bottom = this.element.offsetTop + this.element.offsetHeight;
-      console.log(this.playerPosition.left);
-      console.log(this.playerPosition.right);
     });
     window.addEventListener('keyup', ({keyCode}) => {
       switch(keyCode){
