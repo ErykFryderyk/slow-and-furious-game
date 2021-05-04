@@ -99,6 +99,7 @@ body {
     width: 5px;
     height: 100%;
     background-color: rgb(131, 131, 131);
+    z-index: 0;
 }
 
 .roadway::before {
@@ -137,7 +138,7 @@ body {
 }
 
 .broken-line div{
-    animation: anim 1s infinite linear;
+    /* animation: anim .3s infinite linear; */
     background-color: #fff;
     width: 2px;
     height: 100px;
@@ -164,17 +165,19 @@ body {
 /* PLAYER CAR */
 .car{
     position: fixed; 
-    width: 150px;
+    width: 70px;
     height: 150px;
     background-image: url("../img/Car.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     left: 0;
     bottom: 0;
     transition: transform .2s ease;
     transform-origin: center;
-    /* background-color: rgba(255, 255, 255, 0.034); */
+    /* background-color: rgba(255, 255, 255, 0.836); */
     z-index: 1;
+    overflow: hidden;
 }
 
 .ride {
@@ -204,13 +207,16 @@ body {
 }
 
 .other-car {
-    width: 150px;
+    width: 60px;
     height: 150px;
     background-size: cover;
+    background-position: -40px;
     transform: rotate(180deg);
-    /* background-color: rgba(255, 255, 255, 0.021); */
+    /* background-color: rgba(255, 255, 255, 0.856); */
     top: 0;
     position: fixed;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .pickup{
@@ -218,6 +224,18 @@ body {
 }
 .van{
     background-image: url("../img/Mini_van.png");
+}
+.audi{
+    background-image: url("../img/Audi.png");
+}
+.taxi{
+    background-image: url("../img/taxi.png");
+}
+.truck{
+    background-image: url("../img/truck.png");
+}
+.police{
+    background-image: url("../img/Police.png");
 }
 
 .hide {
