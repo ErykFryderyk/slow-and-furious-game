@@ -19,6 +19,8 @@ class Game {
   #intervalValue = 1500;
   #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
 
+  time = 2000;
+
 
 
   init() {
@@ -29,12 +31,12 @@ class Game {
   #newGame(){
     this.#otherCarsInterval = 10;
     // this.#createOtherCarInterval = setInterval(() => this.#randomNewOtherCar(), this.#intervalValue);
-    // this.$createOtherCarInterval = this.#loop();
     this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
+    this.$createOtherCarInterval = this.#loop();
   }
 
   #loop(){
-    this.#intervalValue = Math.round(Math.random() * (1000-500)) + 500;
+    this.#intervalValue = Math.round(Math.random() * (this.time-500)) + 500;
       setTimeout(() => {
             this.#randomNewOtherCar();
             this.#loop();
@@ -71,20 +73,24 @@ class Game {
         right: car.element.offsetLeft + car.element.offsetWidth,
         bottom: car.element.offsetTop + car.element.offsetHeight,
         left: car.element.offsetLeft,
-      };
+      }
       if(carPosition.top > window.innerHeight){
         car.remove();
         carsArr.splice(carIndex, 1);
-        // this.#carSpeed += 0.2;
-        // console.log(this.#carSpeed);
+
+        if(this.time > 500){
+          console.log(this.time);
+          this.time -=  50;
+        }
       }
       if(
-        this.#car.playerPosition.bottom >= carPosition.top && 
-        this.#car.playerPosition.top <= carPosition.bottom &&
-        this.#car.playerPosition.right >= carPosition.left &&
-        this.#car.playerPosition.left <= carPosition.right){
+        (this.#car.element.offsetTop + 30) <= carPosition.bottom &&
+        (this.#car.element.offsetLeft + this.#car.element.offsetWidth - 15)  >= carPosition.left &&
+        (this.#car.element.offsetTop + this.#car.element.offsetHeight - 100) >= carPosition.top && 
+        (this.#car.element.offsetLeft + 10) <= carPosition.right){
           car.remove();
           carsArr.splice(carIndex, 1);
+          console.log('crash');
         }
     })
   }
@@ -92,5 +98,5 @@ class Game {
 
 window.onload = function () {
   const game = new Game();
-  game.init();
+  // game.init();
 };
