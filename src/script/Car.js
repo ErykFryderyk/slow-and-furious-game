@@ -7,12 +7,6 @@ export class Car {
   #modifier = 5;
   #leftArrow = false;
   #rightArrow = false;
-  playerPosition = {
-    top: null,
-    left: null,
-    bottom: null,
-    right: null,
-  };
     
   init() {
     this.#setPosition();
@@ -43,10 +37,6 @@ export class Car {
           this.element.classList.add('turn-right');
           break;
       }
-      this.playerPosition.left = this.element.offsetLeft;
-      this.playerPosition.right = this.element.offsetLeft + this.element.offsetWidth;
-      this.playerPosition.top = this.element.offsetTop;
-      this.playerPosition.bottom = this.element.offsetTop + this.element.offsetHeight;
     });
     window.addEventListener('keyup', ({keyCode}) => {
       switch(keyCode){
