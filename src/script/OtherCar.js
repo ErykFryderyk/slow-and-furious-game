@@ -13,25 +13,32 @@ export class OtherCar {
     }
     
     #setCar(){
+        let road = this.#randomDrivingCarPosition();
         this.element.classList.add('other-car');
         this.element.classList.add(this.otherCarClass);
         this.element.style.top = "-150px";
-        this.element.style.left = `${this.#randomDrivingCarPosition()}px`;
-        if(this.element.style.left <= '350px'){
-            this.carSpeed *= 2;
-        }else {
+        // this.element.style.left = `${this.#randomDrivingCarPosition()}px`;
+
+        if(road == '0'){
+            this.carSpeed *= 1.5;
+            this.element.style.left = '90px';
+        }else if(road == '1'){
+            this.carSpeed *= 1.5;
+            this.element.style.left = '260px';
+        }else if(road == '2'){
+            this.element.style.left = '435px';
             this.element.style.transform = 'rotate(0deg)';
+        }else if(road == '3'){
+            this.element.style.left = '600px';
+            this.element.style.transform = 'rotate(0deg)';
+        }else {
+            return;
         };
         this.container.appendChild(this.element);
     }
     
     #randomDrivingCarPosition(){
-        return Math.floor(
-            Math.random() * 
-            this.container.offsetWidth + 
-            this.container.getBoundingClientRect().x + 
-            this.element.offsetWidth
-        );
+        return Math.floor(Math.random() * 4);
     }
 
     #updatePosition(){
