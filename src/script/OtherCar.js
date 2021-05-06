@@ -16,7 +16,7 @@ export class OtherCar {
         let road = this.#randomDrivingCarPosition();
         this.element.classList.add('other-car');
         this.element.classList.add(this.otherCarClass);
-        this.element.style.top = "-150px";
+        this.element.style.top = "-200px";
         // this.element.style.left = `${this.#randomDrivingCarPosition()}px`;
 
         if(road == '0'){
