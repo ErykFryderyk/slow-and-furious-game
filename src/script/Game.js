@@ -4,22 +4,23 @@ import { OtherCar } from './OtherCar.js';
 class Game {
   #htmlElements = {
       car: document.querySelector('[data-car]'),
-      roadway: document.querySelector('[data-roadway]')
+      roadway: document.querySelector('[data-roadway]'),
+      score: document.querySelector('[data-score]'),
   }  
   #car = new Car(
     this.#htmlElements.car, 
     this.#htmlElements.roadway
   );
-
+  #score = 0;
   #cars = [];
   #otherCarsInterval = null;
   #checkPositionInterval = null;
   #createOtherCarInterval = null;
-  #carSpeed = 5;
+  #carSpeed = 6;
   #intervalValue = 1500;
   #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
 
-  time = 2000;
+  time = 1500;
 
 
 
@@ -79,9 +80,11 @@ class Game {
         carsArr.splice(carIndex, 1);
 
         if(this.time > 500){
-          console.log(this.time);
           this.time -=  50;
         }
+
+        this.#score = this.#score + 10; 
+        this.#htmlElements.score.innerHTML = this.#score;
       }
       if(
         (this.#car.element.offsetTop + 30) <= carPosition.bottom &&
@@ -91,6 +94,8 @@ class Game {
           car.remove();
           carsArr.splice(carIndex, 1);
           console.log('crash');
+          this.#score = 0; 
+          this.#htmlElements.score.innerHTML = 0;
         }
     })
   }
