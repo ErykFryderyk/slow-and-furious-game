@@ -30,6 +30,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #000;
 }
 
 .wrapper__game-start {
@@ -71,6 +72,67 @@ body {
     transform: scale(1.1);
 }
 
+.wrapper__select-car {
+    text-align: center;
+    min-width: 500px;
+    height: auto;
+}
+
+.wrapper__title h2 {
+    letter-spacing: 2px;
+    margin: 10px 0;
+}
+
+.btn__select-car {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    overflow: hidden;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.btn__select-car img{
+    height: auto;
+    width: 100%;
+}
+
+.btn__select-car:hover {
+    transform: scale(1.05);
+}
+
+.btn__select-car:focus {
+    border: 1px solid red;
+    transform: scale(1.05);
+}
+
+.inactive-button {
+    pointer-events: none;
+}
+.inactive-button img{
+    opacity: .5;
+}
+
+.btn__lets-play{
+    font-family: var(--primary-family);
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.btn__lets-play:hover{
+    color: var(--main-btn-color);
+}
+
+
+
 /* GAME BOARD */
 
 .game-board {
@@ -82,6 +144,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.score{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 999;
+
 }
 
 .roadway {
@@ -165,12 +234,12 @@ body {
 /* PLAYER CAR */
 .car{
     position: fixed; 
-    width: 70px;
-    height: 150px;
+    width: 100px;
+    height: 210px;
     background-image: url("../img/Car.png");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: 49% center;
     left: 0;
     bottom: 0;
     transition: transform .2s ease;
@@ -207,35 +276,41 @@ body {
 }
 
 .other-car {
-    width: 60px;
-    height: 150px;
+    width: 100px;
+    height: 210px;
     background-size: cover;
-    background-position: -40px;
+    
     transform: rotate(180deg);
     /* background-color: rgba(255, 255, 255, 0.856); */
     top: 0;
     position: fixed;
     overflow: hidden;
-    z-index: 1;
+    transform-origin: center;
+    /* z-index: 1; */
 }
 
 .pickup{
     background-image: url("../img/Mini_truck.png");
+    background-position: 44% center;
 }
 .van{
     background-image: url("../img/Mini_van.png");
+    background-position: 45% center;
 }
 .audi{
     background-image: url("../img/Audi.png");
+    background-position: 49% center;
 }
 .taxi{
     background-image: url("../img/taxi.png");
+    background-position: 47% center;
 }
 .truck{
     background-image: url("../img/truck.png");
 }
 .police{
     background-image: url("../img/Police.png");
+    background-position: 49% center;
 }
 
 .hide {
