@@ -72,6 +72,24 @@ body {
     transform: scale(1.1);
 }
 
+.input__game-start{
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    border: 1px solid gray;
+    background-color: transparent;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    color: var(--main-btn-color);
+    font-family: var(--primary-family);
+    outline: none;
+}
+.input__game-start:focus{
+    border: 1px solid darkgray;
+}
+
+/* SELECT CAR  */
 .wrapper__select-car {
     text-align: center;
     min-width: 500px;
