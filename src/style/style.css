@@ -5,6 +5,7 @@
 
     /* COLORS */
     --main-btn-color: #bb3131;
+    --white-color: #fff;
     --grass-color: rgb(20, 99, 20);
 
     /* VALUE */
@@ -69,7 +70,7 @@ body {
 
 .btn__game-start:hover {
     color: var(--main-btn-color);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .input__game-start{
@@ -78,15 +79,27 @@ body {
     font-size: 18px;
     letter-spacing: 1.5px;
     border: 1px solid gray;
+    border-radius: 3px;
     background-color: transparent;
     margin-bottom: 10px;
     padding-left: 10px;
-    color: var(--main-btn-color);
+    /* color: var(--white-color); */
+    color: gray;
     font-family: var(--primary-family);
     outline: none;
 }
 .input__game-start:focus{
     border: 1px solid darkgray;
+    color: darkgray;
+}
+.input__game-start:focus::placeholder{
+    color: transparent;
+}
+.input__game-start--error{
+    border: 1px solid orangered;
+}
+.input__game-start--error::placeholder{
+    color: orangered;
 }
 
 /* SELECT CAR  */
