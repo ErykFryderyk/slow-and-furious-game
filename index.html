@@ -12,8 +12,8 @@
       <div class="container">
         <div class="wrapper__game-start">
           <h1 class="header__game-start">SLOW and FURIOUS</h1>
-          <input class="input__game-start" type="text" name="name" placeholder="your name">
-          <button class="btn__game-start">Start</button>
+          <input class="input__game-start" data-input-name type="text" name="name" placeholder="your name" maxlength="10">
+          <button class="btn__game-start" data-start-game>Start</button>
         </div>
         <div class="wrapper__select-car hide">
           <div class="wrapper__title">
@@ -63,6 +63,7 @@
         </div>
       </div>
     </main>
+    <script src="./src/script/main.js" type="module"></script>
     <script src="./src/script/Game.js" type="module"></script>
   </body>
 </html>
