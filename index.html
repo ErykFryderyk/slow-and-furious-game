@@ -10,12 +10,12 @@
   <body>
     <main>
       <div class="container">
-        <div class="wrapper__game-start">
+        <div class="wrapper__game-start" data-wrapper-game>
           <h1 class="header__game-start">SLOW and FURIOUS</h1>
           <input class="input__game-start" data-input-name type="text" name="name" placeholder="your name" maxlength="10">
           <button class="btn__game-start" data-start-game>Start</button>
         </div>
-        <div class="wrapper__select-car hide">
+        <div class="wrapper__select-car hide" data-wrapper-select-cars>
           <div class="wrapper__title">
               <h2>Choose Your Car</h2>
           </div>
@@ -25,14 +25,15 @@
             <button class="btn__select-car inactive-button"><img src="./src/img/Black_viper.png" alt=""></button>
           </div>
           <div class="play">
-            <button class="btn__lets-play">PLAY</button>
+            <button class="btn__lets-play" data-play-btn>PLAY</button>
           </div>
         </div>
       </div>
 
-      <div class="game-board hide">
+      <div class="game-board hide" data-game-board>
         <div class="score">
-          <p>Punkty: <span data-score>0</span></p>
+          <p><span data-player>Darek</span></p>
+          <p>Score: <span data-score>0</span></p>
         </div>
         <div class="roadway" data-roadway>
           <div class="double-solid-line"></div>
