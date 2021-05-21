@@ -21,15 +21,15 @@ export class OtherCar {
 
         if(road == '0'){
             this.carSpeed *= 1.5;
-            this.element.style.left = '90px';
+            this.element.style.left = `${this.container.offsetLeft + 20}px`;
         }else if(road == '1'){
             this.carSpeed *= 1.5;
-            this.element.style.left = '260px';
+            this.element.style.left = `${this.container.offsetLeft + 210}px`;
         }else if(road == '2'){
-            this.element.style.left = '435px';
+            this.element.style.left = `${this.container.offsetLeft + 390}px`;
             this.element.style.transform = 'rotate(0deg)';
         }else if(road == '3'){
-            this.element.style.left = '600px';
+            this.element.style.left = `${this.container.offsetLeft + 550}px`;
             this.element.style.transform = 'rotate(0deg)';
         }else {
             return;
