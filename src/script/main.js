@@ -6,7 +6,8 @@ const gameBoard = document.querySelector('[data-game-board]');
 const inputName = document.querySelector('[data-input-name]');
 const startGameBtn = document.querySelector('[data-start-game]');
 const playBtn = document.querySelector('[data-play-btn]');
-
+const modal = document.querySelector('[data-modal]');
+const playAgainBtn = document.querySelector('[data-play-again]');
 
 const startGame = () => {
     if(inputName.value !== ''){
@@ -31,9 +32,14 @@ playBtn.addEventListener('click', () => {
     gameBoard.classList.remove('hide');
 
     // window.onload = function () {
-        const game = new Game();
+        const game = new Game(gameBoard);
         game.init();
-    // };
+    // }; 
 });
+
+playAgainBtn.addEventListener('click', () => {
+    modal.classList.add('hide');
+    startContainer.classList.remove('hide');
+})
 
 
