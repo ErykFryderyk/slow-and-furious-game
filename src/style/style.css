@@ -5,6 +5,7 @@
 
     /* COLORS */
     --white-color: #fff;
+    --black-color: #000;
     --main-btn-color: #ffa500;
     --second-color: #9c9c9c;
     --grass-color: #146314;
@@ -242,7 +243,7 @@ body {
 }
 
 .broken-line div{
-    /* animation: anim .3s infinite linear; */
+    animation: anim .3s infinite linear;
     background-color: #fff;
     width: 2px;
     height: 100px;
@@ -346,6 +347,19 @@ body {
 .police{
     background-image: url("../img/Police.png");
     background-position: 49% center;
+}
+
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    background-color: var(--black-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .hide {
