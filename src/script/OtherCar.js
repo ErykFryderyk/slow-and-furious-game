@@ -17,7 +17,6 @@ export class OtherCar {
         this.element.classList.add('other-car');
         this.element.classList.add(this.otherCarClass);
         this.element.style.top = "-200px";
-        // this.element.style.left = `${this.#randomDrivingCarPosition()}px`;
 
         if(road == '0'){
             this.carSpeed *= 1.5;
@@ -49,7 +48,6 @@ export class OtherCar {
     }
 
     remove(){
-        clearInterval(this.interval);
         this.element.remove();
     }
 }
