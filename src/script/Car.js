@@ -18,7 +18,7 @@ export class Car {
     this.element.style.bottom = '1px';
     this.element.style.left = `${
       window.innerWidth / 2 - this.#getPosition()
-    }px`;
+     + 100}px`;
   }
   
   #getPosition(){
