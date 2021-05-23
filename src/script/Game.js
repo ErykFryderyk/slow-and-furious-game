@@ -1,11 +1,15 @@
 import { Car } from "./Car.js";
 import { OtherCar } from './OtherCar.js';
 
-class Game {
+export class Game {
+  constructor(gameBoard){
+    this.container = gameBoard;
+  }
   #htmlElements = {
       car: document.querySelector('[data-car]'),
       roadway: document.querySelector('[data-roadway]'),
       score: document.querySelector('[data-score]'),
+      modal: document.querySelector('[data-modal]'),
   }  
   #car = new Car(
     this.#htmlElements.car, 
@@ -19,29 +23,33 @@ class Game {
   #carSpeed = 6;
   #intervalValue = 1500;
   #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
-
+  
   time = 1500;
+  crash = false;
 
 
-
+  // Rozpoczęcie gry
   init() {
-    this.#car.init();
-    this.#newGame();
+    this.#car.init(); // Tworzenie pojazdu gracza.
+    this.#newGame();  // Tworzenie wrogich samochodów.
   }
 
   #newGame(){
     this.#otherCarsInterval = 10;
-    // this.#createOtherCarInterval = setInterval(() => this.#randomNewOtherCar(), this.#intervalValue);
     this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
-    this.$createOtherCarInterval = this.#loop();
+    this.#createOtherCarInterval = this.#loop();
   }
 
   #loop(){
-    this.#intervalValue = Math.round(Math.random() * (this.time-500)) + 500;
+    if(!this.crash){
+      this.#intervalValue = Math.round(Math.random() * (this.time-500)) + 500;
       setTimeout(() => {
-            this.#randomNewOtherCar();
-            this.#loop();
+        this.#randomNewOtherCar();
+        this.#loop();
       }, this.#intervalValue);
+    }else {
+      return;
+    }
   }
 
   #randomNewOtherCar(){
@@ -67,6 +75,11 @@ class Game {
     this.#cars.push(car);
   }
 
+  #clearScore(){
+    this.#htmlElements.score.innerHTML = 0;
+    this.#score = 0; 
+  }
+
   #checkPosition(){
     this.#cars.forEach((car, carIndex, carsArr) => {
       const carPosition = {
@@ -86,22 +99,18 @@ class Game {
         this.#score = this.#score + 10; 
         this.#htmlElements.score.innerHTML = this.#score;
       }
-      if(
+      if (
         (this.#car.element.offsetTop + 30) <= carPosition.bottom &&
         (this.#car.element.offsetLeft + this.#car.element.offsetWidth - 15)  >= carPosition.left &&
         (this.#car.element.offsetTop + this.#car.element.offsetHeight - 100) >= carPosition.top && 
         (this.#car.element.offsetLeft + 10) <= carPosition.right){
           car.remove();
           carsArr.splice(carIndex, 1);
-          console.log('crash');
-          this.#score = 0; 
-          this.#htmlElements.score.innerHTML = 0;
+          this.#clearScore();
+          this.crash = true;
+          this.container.classList.add('hide');
+          this.#htmlElements.modal.classList.remove('hide');
         }
     })
   }
 }
-
-window.onload = function () {
-  const game = new Game();
-  // game.init();
-};
