@@ -31,15 +31,13 @@ playBtn.addEventListener('click', () => {
     selectCarsContainer.classList.add('hide');
     gameBoard.classList.remove('hide');
 
-    // window.onload = function () {
-        const game = new Game(gameBoard);
-        game.init();
-    // }; 
+    const game = new Game(gameBoard);
+    game.init();
 });
 
 playAgainBtn.addEventListener('click', () => {
     modal.classList.add('hide');
-    startContainer.classList.remove('hide');
+    selectCarsContainer.classList.remove('hide');
 })
 
 
