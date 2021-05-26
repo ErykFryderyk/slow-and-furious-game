@@ -9,6 +9,7 @@ export class Game {
       car: document.querySelector('[data-car]'),
       roadway: document.querySelector('[data-roadway]'),
       score: document.querySelector('[data-score]'),
+      yourScore: document.querySelector('[data-your-score]'),
       modal: document.querySelector('[data-modal]'),
   }  
   #car = new Car(
@@ -104,6 +105,7 @@ export class Game {
         (this.#car.element.offsetLeft + this.#car.element.offsetWidth - 15)  >= carPosition.left &&
         (this.#car.element.offsetTop + this.#car.element.offsetHeight - 100) >= carPosition.top && 
         (this.#car.element.offsetLeft + 10) <= carPosition.right){
+          this.#htmlElements.yourScore.innerHTML = `Your score: ${this.#score}`;
           car.remove();
           carsArr.splice(carIndex, 1);
           this.#clearScore();
