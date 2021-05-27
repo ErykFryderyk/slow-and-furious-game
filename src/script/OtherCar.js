@@ -48,7 +48,7 @@ export class OtherCar {
     }
 
     remove(){
-        this.element.remove();
+        this.element.remove();  //Usuwanie samochódów
     }
 }
 
