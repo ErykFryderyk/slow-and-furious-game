@@ -9,12 +9,12 @@ export class Car {
   #rightArrow = false;
     
   init() {
-    this.#setPosition();
+    this.setPosition();
     this.#eventListeners();
     this.#gameLoop();
   }
   
-  #setPosition(){
+  setPosition(){
     this.element.style.bottom = '1px';
     this.element.style.left = `${
       window.innerWidth / 2 - this.#getPosition()
@@ -57,17 +57,17 @@ export class Car {
       requestAnimationFrame(this.#gameLoop);
   }
   #whatKey(){
-      if (
-        this.#leftArrow &&
-        this.#getPosition() > (this.gameArea.getBoundingClientRect().left + 40))
-        {
-          this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier}px`;
-        }
-      if (
-        this.#rightArrow && 
-        this.#getPosition() < (this.gameArea.getBoundingClientRect().right - 40))
-        {
-          this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier}px`;
-        }
+    if (
+      this.#leftArrow &&
+      this.#getPosition() > (this.gameArea.getBoundingClientRect().left + 40))
+      {
+        this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier}px`;
+      }
+    if (
+      this.#rightArrow && 
+      this.#getPosition() < (this.gameArea.getBoundingClientRect().right - 40))
+      {
+        this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier}px`;
+      }
   }
 }
