@@ -11,11 +11,13 @@ export class Game {
       score: document.querySelector('[data-score]'),
       yourScore: document.querySelector('[data-your-score]'),
       modal: document.querySelector('[data-modal]'),
+      playAgainBtn: document.querySelector('[data-play-again]')
   }  
   #car = new Car(
     this.#htmlElements.car, 
     this.#htmlElements.roadway
   );
+
   #score = 0;
   #cars = [];
   #otherCarsInterval = null;
@@ -31,6 +33,7 @@ export class Game {
 
   // Rozpoczęcie gry
   init() {
+    this.#clearScore();
     this.#car.init(); // Tworzenie pojazdu gracza.
     this.#newGame();  // Tworzenie wrogich samochodów.
   }
@@ -39,6 +42,15 @@ export class Game {
     this.#otherCarsInterval = 10;
     this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
     this.#createOtherCarInterval = this.#loop();
+  }
+  
+  #endGame(){
+    carsArr.splice(carIndex, 1);
+          this.#clearScore();
+          this.crash = true;
+          this.#car.setPosition();
+          this.container.classList.add('hide');
+          this.#htmlElements.modal.classList.remove('hide');
   }
 
   #loop(){
@@ -66,14 +78,14 @@ export class Game {
         carClass, 
     ); 
   }
-
+  
   #createNewOtherCar(...params){
     const car = new OtherCar(
       ...params
-    );
-
-    car.init();
-    this.#cars.push(car);
+      );
+      
+      car.init();
+      this.#cars.push(car);
   }
 
   #clearScore(){
@@ -89,7 +101,7 @@ export class Game {
         bottom: car.element.offsetTop + car.element.offsetHeight,
         left: car.element.offsetLeft,
       }
-      if(carPosition.top > window.innerHeight){
+      if(carPosition.top > window.innerHeight){  // Usuwanie samochodów gdy wyjadą za dolną cześć ekranu
         car.remove();
         carsArr.splice(carIndex, 1);
 
@@ -105,11 +117,14 @@ export class Game {
         (this.#car.element.offsetLeft + this.#car.element.offsetWidth - 15)  >= carPosition.left &&
         (this.#car.element.offsetTop + this.#car.element.offsetHeight - 100) >= carPosition.top && 
         (this.#car.element.offsetLeft + 10) <= carPosition.right){
-          this.#htmlElements.yourScore.innerHTML = `Your score: ${this.#score}`;
-          car.remove();
-          carsArr.splice(carIndex, 1);
-          this.#clearScore();
           this.crash = true;
+          this.#htmlElements.yourScore.innerHTML = `Your score: ${this.#score}`;
+
+          carsArr.splice(carIndex, 1);
+          carsArr.forEach(car => car.remove());
+
+          this.#car.setPosition();
+
           this.container.classList.add('hide');
           this.#htmlElements.modal.classList.remove('hide');
         }
