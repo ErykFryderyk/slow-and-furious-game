@@ -7,6 +7,8 @@ export class OtherCar {
         this.element = document.createElement('div');
     }
     
+    interval = null;
+    
     init(){
         this.#setCar();
         this.#updatePosition();
@@ -41,13 +43,14 @@ export class OtherCar {
     }
 
     #updatePosition(){
-        setInterval(() => this.#setNewPosition(), this.intervalTime);
+        this.interval = setInterval(() => this.#setNewPosition(), this.intervalTime);
     }
     #setNewPosition(){
         this.element.style.top = `${this.element.offsetTop + this.carSpeed}px`
     }
 
     remove(){
+        clearInterval(this.interval);
         this.element.remove();  //Usuwanie samochódów
     }
 }
