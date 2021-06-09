@@ -23,7 +23,7 @@ export class Game {
   #otherCarsInterval = null;
   #checkPositionInterval = null;
   #createOtherCarInterval = null;
-  #carSpeed = 6;
+  #carSpeed = 1;
   #intervalValue = 1500;
   #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
   
@@ -42,15 +42,16 @@ export class Game {
     this.#otherCarsInterval = 10;
     this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
     this.#createOtherCarInterval = this.#loop();
+    // this.#createOtherCarInterval = setInterval(() => this.#randomNewOtherCar(), 1000);
   }
   
   #endGame(){
     carsArr.splice(carIndex, 1);
-          this.#clearScore();
-          this.crash = true;
-          this.#car.setPosition();
-          this.container.classList.add('hide');
-          this.#htmlElements.modal.classList.remove('hide');
+    this.#clearScore();
+    this.crash = true;
+    this.#car.setPosition();
+    this.container.classList.add('hide');
+    this.#htmlElements.modal.classList.remove('hide');
   }
 
   #loop(){
@@ -80,6 +81,7 @@ export class Game {
   }
   
   #createNewOtherCar(...params){
+    console.log(this.#cars);
     const car = new OtherCar(
       ...params
       );
@@ -105,12 +107,13 @@ export class Game {
         car.remove();
         carsArr.splice(carIndex, 1);
 
-        if(this.time > 500){
+
+        if(this.time > 500){  //zmniejszanie czasu 
           this.time -=  50;
         }
 
-        this.#score = this.#score + 10; 
-        this.#htmlElements.score.innerHTML = this.#score;
+        this.#score = this.#score + 10; // dodawanie punktów dla gracza
+        this.#htmlElements.score.innerHTML = this.#score; //wyświetlanie punktów na planszy 
       }
       if (
         (this.#car.element.offsetTop + 30) <= carPosition.bottom &&
@@ -120,13 +123,15 @@ export class Game {
           this.crash = true;
           this.#htmlElements.yourScore.innerHTML = `Your score: ${this.#score}`;
 
-          carsArr.splice(carIndex, 1);
-          carsArr.forEach(car => car.remove());
+          car.remove();
+          carsArr.splice(carIndex, 1); 
+          clearInterval(this.#checkPositionInterval)
+          this.#cars.forEach(car => car.remove());
 
           this.#car.setPosition();
 
-          this.container.classList.add('hide');
-          this.#htmlElements.modal.classList.remove('hide');
+          // this.container.classList.add('hide');
+          // this.#htmlElements.modal.classList.remove('hide');
         }
     })
   }
