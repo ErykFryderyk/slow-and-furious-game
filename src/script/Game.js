@@ -42,28 +42,28 @@ export class Game {
     this.#otherCarsInterval = 10;
     this.#checkPositionInterval = setInterval(() => this.#checkPosition(), 1);
     this.#createOtherCarInterval = this.#loop();
-    // this.#createOtherCarInterval = setInterval(() => this.#randomNewOtherCar(), 1000);
   }
   
   #endGame(){
     carsArr.splice(carIndex, 1);
     this.#clearScore();
     this.crash = true;
+    this.#cars.forEach(car => car.remove());
     this.#car.setPosition();
     this.container.classList.add('hide');
     this.#htmlElements.modal.classList.remove('hide');
   }
 
   #loop(){
-    if(!this.crash){
-      this.#intervalValue = Math.round(Math.random() * (this.time-500)) + 500;
-      setTimeout(() => {
+    this.#intervalValue = Math.round(Math.random() * (this.time-500)) + 500;
+    setTimeout(() => {
+      if(!this.crash){
         this.#randomNewOtherCar();
         this.#loop();
-      }, this.#intervalValue);
-    }else {
-      return;
-    }
+      }else{
+        return;
+      }
+    }, this.#intervalValue);
   }
 
   #randomNewOtherCar(){
@@ -120,18 +120,20 @@ export class Game {
         (this.#car.element.offsetLeft + this.#car.element.offsetWidth - 15)  >= carPosition.left &&
         (this.#car.element.offsetTop + this.#car.element.offsetHeight - 100) >= carPosition.top && 
         (this.#car.element.offsetLeft + 10) <= carPosition.right){
+          // this.#endGame();
           this.crash = true;
           this.#htmlElements.yourScore.innerHTML = `Your score: ${this.#score}`;
 
           car.remove();
           carsArr.splice(carIndex, 1); 
           clearInterval(this.#checkPositionInterval)
+          this.#otherCarsInterval = null;
           this.#cars.forEach(car => car.remove());
 
           this.#car.setPosition();
 
-          // this.container.classList.add('hide');
-          // this.#htmlElements.modal.classList.remove('hide');
+          this.container.classList.add('hide');
+          this.#htmlElements.modal.classList.remove('hide');
         }
     })
   }
