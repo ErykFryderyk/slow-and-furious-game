@@ -13,7 +13,8 @@ export class Game {
       modal: document.querySelector('[data-modal]'),
       playAgainBtn: document.querySelector('[data-play-again]')
   }  
-  #car = new Car(
+  
+  #car = new Car(                     //Instancja klasy 
     this.#htmlElements.car, 
     this.#htmlElements.roadway
   );
@@ -23,7 +24,7 @@ export class Game {
   #otherCarsInterval = null;
   #checkPositionInterval = null;
   #createOtherCarInterval = null;
-  #carSpeed = 1;
+  #carSpeed = 6;
   #intervalValue = 1500;
   #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
   
@@ -81,7 +82,6 @@ export class Game {
   }
   
   #createNewOtherCar(...params){
-    console.log(this.#cars);
     const car = new OtherCar(
       ...params
       );
