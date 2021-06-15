@@ -1,7 +1,6 @@
 import { Game } from './Game.js';
 
 class initializeGame {
-    gameObject = null; 
 
     startContainer = document.querySelector('[data-wrapper-game]');
     selectCarsContainer = document.querySelector('[data-wrapper-select-cars]');
@@ -14,7 +13,7 @@ class initializeGame {
 
     initGame(){
         this.startGameBtn.addEventListener('click', () => {
-            this.selectCar()}
+            this.checkInputName()}
         );
 
         this.inputName.addEventListener('keyup', () => {
@@ -25,12 +24,11 @@ class initializeGame {
             this.startGame();
         });
         this.playAgainBtn.addEventListener('click', () => {
-            console.log(this.gameObject);
             this.gameObject = null;
-            this.selectCar();
+            this.checkInputName();
         });
     }
-    selectCar(){
+    checkInputName(){
         if(this.inputName.value != ''){
             this.startContainer.classList.add('hide');
             this.selectCarsContainer.classList.remove('hide');
@@ -40,11 +38,12 @@ class initializeGame {
         }
     }
     startGame() {
-        this.gameObject = new Game(this.gameBoard);
+        const selectedCar = document.querySelector('input[type="radio"]:checked').id;
 
         this.selectCarsContainer.classList.add('hide');
         this.gameBoard.classList.remove('hide');
-
+        
+        this.gameObject = new Game(this.gameBoard, selectedCar);
         this.gameObject.init();
     }
     checkError(){
