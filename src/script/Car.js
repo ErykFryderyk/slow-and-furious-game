@@ -1,20 +1,33 @@
 export class Car {
-  constructor(element, gameArea){
+  constructor(element, container, type, modifier){
       this.element = element;
-      this.gameArea = gameArea;
+      this.gameArea = container;
+      // this.modifier = modifier;
   } 
-
-  #modifier = 5;
+  modifier = null;
   #leftArrow = false;
   #rightArrow = false;
     
-  init() {
-    this.setPosition();
+  init(selectedCar) {
+    this.setPosition(selectedCar);
+    this.modifier = this.get(selectedCar)
     this.#eventListeners();
     this.#gameLoop();
   }
+
+  get(car) {
+    switch (car) {
+      case 'mustang':
+        return 5;
+      case 'audi':
+        return 8;
+      case 'viper': 
+        return 11;
+    }
+  }
   
-  setPosition(){
+  setPosition(carName){
+    this.element.style.backgroundImage = `url('../src/img/${carName}.png')`;
     this.element.style.bottom = '1px';
     this.element.style.left = `${
       window.innerWidth / 2 - this.#getPosition()
@@ -61,13 +74,13 @@ export class Car {
       this.#leftArrow &&
       this.#getPosition() > (this.gameArea.getBoundingClientRect().left + 40))
       {
-        this.element.style.left = `${parseInt(this.element.style.left, 10) - this.#modifier}px`;
+        this.element.style.left = `${parseInt(this.element.style.left, 10) - this.modifier}px`;
       }
     if (
       this.#rightArrow && 
       this.#getPosition() < (this.gameArea.getBoundingClientRect().right - 40))
       {
-        this.element.style.left = `${parseInt(this.element.style.left, 10) + this.#modifier}px`;
+        this.element.style.left = `${parseInt(this.element.style.left, 10) + this.modifier}px`;
       }
   }
 }
