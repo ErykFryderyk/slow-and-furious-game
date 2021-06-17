@@ -137,38 +137,10 @@ body {
     /* border: 1px solid var(--second-color); */
     background: rgb(87, 86, 96);
     background: radial-gradient(circle, rgba(87, 86, 96, 1) 0%, rgba(153, 153, 166, 0) 62%);
-}
-
-.btn__select-car {
-    width: 150px;
-    height: 150px;
-    background-color: transparent;
-    border: 1px solid var(--second-color);
-    overflow: hidden;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-.btn__select-car img{
-    height: auto;
-    width: 100%;
-}
-
-.btn__select-car:hover {
     transform: scale(1.05);
 }
-
-.btn__select-car:focus {
-    border: 1px solid var(--main-btn-color);
-    transform: scale(1.05);
-}
-
-.inactive-button {
-    pointer-events: none;
-}
-.inactive-button img{
-    opacity: 0.4;
+.radio-input:disabled + .radio-custom-label img{  /* "+" oznacza ze tylko jeden potomek nedzie miał przypisane style naomias "~" wszystkie potomki  */
+    opacity: .4;
 }
 
 .btn__lets-play{
