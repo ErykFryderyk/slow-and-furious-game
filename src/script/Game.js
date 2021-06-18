@@ -1,12 +1,14 @@
 import { Car } from "./Car.js";
 import { OtherCar } from './OtherCar.js';
 
+let bestScore = 0;
 export class Game {
-  constructor(gameBoard){
+  constructor(gameBoard, selectedCar){
     this.container = gameBoard;
+    this.selectedCar = selectedCar;
   }
   #htmlElements = {
-      car: document.querySelector('[data-car]'),
+      carContainer: document.querySelector('[data-car]'),
       roadway: document.querySelector('[data-roadway]'),
       score: document.querySelector('[data-score]'),
       yourScore: document.querySelector('[data-your-score]'),
@@ -15,8 +17,9 @@ export class Game {
   }  
   
   #car = new Car(                     //Instancja klasy 
-    this.#htmlElements.car, 
-    this.#htmlElements.roadway
+    this.#htmlElements.carContainer, 
+    this.#htmlElements.roadway,
+    bestScore
   );
 
   #score = 0;
@@ -35,7 +38,7 @@ export class Game {
   // Rozpoczęcie gry
   init() {
     this.#clearScore();
-    this.#car.init(); // Tworzenie pojazdu gracza.
+    this.#car.init(this.selectedCar); // Tworzenie pojazdu gracza.
     this.#newGame();  // Tworzenie wrogich samochodów.
   }
 
@@ -91,10 +94,8 @@ export class Game {
   }
 
   #clearScore(){
-    this.#htmlElements.score.innerHTML = 0;
-    this.#score = 0; 
+    this.#htmlElements.score.textContent = 0;
   }
-
   #checkPosition(){
     this.#cars.forEach((car, carIndex, carsArr) => {
       const carPosition = {
@@ -130,10 +131,19 @@ export class Game {
           this.#otherCarsInterval = null;
           this.#cars.forEach(car => car.remove());
 
+          this.#car.modifier = null;
+          this.#car.checkingScore();
+
           this.#car.setPosition();
 
           this.container.classList.add('hide');
           this.#htmlElements.modal.classList.remove('hide');
+
+          if(this.#score > bestScore){
+            bestScore = this.#score;
+            this.#car.checkingScore(bestScore);
+          }
+
         }
     })
   }
