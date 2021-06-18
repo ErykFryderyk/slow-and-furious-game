@@ -10,6 +10,7 @@ class initializeGame {
     playBtn = document.querySelector('[data-play-btn]');
     modal = document.querySelector('[data-modal]');
     playAgainBtn = document.querySelector('[data-play-again]');
+    playerName = document.querySelector('[data-player]');
 
     initGame(){
         this.startGameBtn.addEventListener('click', () => {
@@ -38,6 +39,7 @@ class initializeGame {
         }
     }
     startGame() {
+        this.playerName.textContent = this.inputName.value;
         const selectedCar = document.querySelector('input[type="radio"]:checked').id;
 
         this.selectCarsContainer.classList.add('hide');
