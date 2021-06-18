@@ -1,8 +1,8 @@
 export class Car {
-  constructor(element, container, type, modifier){
+  constructor(element, container, score, modifier){
       this.element = element;
       this.gameArea = container;
-      // this.modifier = modifier;
+      this.score = score;
   } 
   modifier = null;
   #leftArrow = false;
@@ -24,6 +24,16 @@ export class Car {
       case 'viper': 
         return 11;
     }
+  }
+
+  checkingScore(score){
+    if(score >= 30){
+      this.#removeAttribute();
+    }
+  }
+
+  #removeAttribute() {
+    document.querySelector('#audi').removeAttribute('disabled');
   }
   
   setPosition(carName){
@@ -83,4 +93,6 @@ export class Car {
         this.element.style.left = `${parseInt(this.element.style.left, 10) + this.modifier}px`;
       }
   }
+
+  
 }
