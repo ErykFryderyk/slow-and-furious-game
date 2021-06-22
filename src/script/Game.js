@@ -13,7 +13,8 @@ export class Game {
       score: document.querySelector('[data-score]'),
       yourScore: document.querySelector('[data-your-score]'),
       modal: document.querySelector('[data-modal]'),
-      playAgainBtn: document.querySelector('[data-play-again]')
+      playAgainBtn: document.querySelector('[data-play-again]'),
+      bestScoreLabel: document.querySelector('[data-best-score]')
   }  
   
   #car = new Car(                     //Instancja klasy 
@@ -141,6 +142,7 @@ export class Game {
 
           if(this.#score > bestScore){
             bestScore = this.#score;
+            this.#htmlElements.bestScoreLabel.textContent = bestScore;
             this.#car.checkingScore(bestScore);
           }
 
