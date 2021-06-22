@@ -1,8 +1,7 @@
 export class Car {
-  constructor(element, container, score, modifier){
+  constructor(element, container){
       this.element = element;
       this.gameArea = container;
-      this.score = score;
   } 
   modifier = null;
   #leftArrow = false;
@@ -27,13 +26,16 @@ export class Car {
   }
 
   checkingScore(score){
-    if(score >= 30){
-      this.#removeAttribute();
+    if(score >= 200){
+      this.#removeAttribute('audi');
+      if(score >= 350){
+      this.#removeAttribute('viper')
+      }
     }
   }
 
-  #removeAttribute() {
-    document.querySelector('#audi').removeAttribute('disabled');
+  #removeAttribute(carName) {
+    document.querySelector(`#${carName}`).removeAttribute('disabled');
   }
   
   setPosition(carName){
@@ -93,6 +95,4 @@ export class Car {
         this.element.style.left = `${parseInt(this.element.style.left, 10) + this.modifier}px`;
       }
   }
-
-  
 }
