@@ -11,7 +11,7 @@ class initializeGame {
     modal = document.querySelector('[data-modal]');
     playAgainBtn = document.querySelector('[data-play-again]');
     playerName = document.querySelector('[data-player]');
-
+    
     initGame(){
         this.startGameBtn.addEventListener('click', () => {
             this.checkInputName()}
