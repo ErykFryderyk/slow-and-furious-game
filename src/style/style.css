@@ -175,7 +175,11 @@ body {
     position: fixed;
 }
 .score{
+    background-color: rgba(19, 70, 209, 0.404);
+    padding: 10px 20px;
+    border-radius: 5px;
     position: absolute;
+    line-height: 1.5;
     top: 10px;
     left: 10px;
     z-index: 999;
@@ -353,6 +357,16 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.modal .title{
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.score-info{
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .hide {
