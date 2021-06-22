@@ -50,7 +50,6 @@ export class OtherCar {
     }
 
     remove(){
-        clearInterval(this.interval);
         this.element.remove();  //Usuwanie samochódów
     }
 }
