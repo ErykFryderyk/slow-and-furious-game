@@ -26,7 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]("src/img/game-screenshot.png");
+[![Product Name Screen Shot][product-screenshot]]("/src/img/game-screenshot.png");
 
 Opis gry.... 
 
