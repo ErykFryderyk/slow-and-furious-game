@@ -39,7 +39,7 @@ export class Car {
   }
   
   setPosition(carName){
-    this.element.style.backgroundImage = `url('../src/img/${carName}.png')`;
+    this.element.style.backgroundImage = `url('./src/img/${carName}.png')`;
     this.element.style.bottom = '1px';
     this.element.style.left = `${
       window.innerWidth / 2 - this.#getPosition()
