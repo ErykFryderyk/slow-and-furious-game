@@ -5,7 +5,7 @@
     short description
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://erykfryderyk.github.io/slow-and-furious-game/" target="blank">View Demo</a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
