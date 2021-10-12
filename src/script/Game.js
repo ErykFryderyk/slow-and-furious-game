@@ -30,7 +30,7 @@ export class Game {
   #createOtherCarInterval = null;
   #carSpeed = 6;
   #intervalValue = 1500;
-  #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'audi', 'police'];
+  #carsClassArray = ['truck', 'pickup', 'van', 'taxi', 'sport', 'police'];
   
   time = 1500;
   crash = false;
