@@ -18,7 +18,7 @@ export class Car {
     switch (car) {
       case 'mustang':
         return 5;
-      case 'audi':
+      case 'Police':
         return 8;
       case 'viper': 
         return 11;
@@ -27,7 +27,7 @@ export class Car {
 
   checkingScore(score){
     if(score >= 200){
-      this.#removeAttribute('audi');
+      this.#removeAttribute('Police');
       if(score >= 350){
       this.#removeAttribute('viper')
       }
