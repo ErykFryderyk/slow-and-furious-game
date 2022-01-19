@@ -26,17 +26,15 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]]("src/img/game-screenshot.png")
+<img src="https://github.com/ErykFryderyk/slow-and-furious-game/blob/main/src/img/game-screenshot.png?raw=true"/>
 
-Opis gry.... 
+This project is a simple game where the player has to drive a car. His task is to get as far as possible without hitting other cars.
 
+<!-- USE TECHNOLOGI-->
 ### Built With
-
-Urzytę technologie...
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-
-
+* JavaScript
+* CSS
+* HTML
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -54,20 +52,11 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
-
-
