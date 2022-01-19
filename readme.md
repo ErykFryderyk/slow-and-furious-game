@@ -26,7 +26,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="https://github.com/ErykFryderyk/slow-and-furious-game/blob/main/src/img/game-screenshot.png?raw=true"/>
+<img src="https://github.com/ErykFryderyk/slow-and-furious-game/blob/main/src/img/slow-and-furiues.jpg?raw=true"/>
 
 This project is a simple game where the player has to drive a car. His task is to get as far as possible without hitting other cars.
 
@@ -54,7 +54,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/ErykFryderyk/slow-and-furious-game.git
    ```
 2. Install NPM packages
    ```sh
