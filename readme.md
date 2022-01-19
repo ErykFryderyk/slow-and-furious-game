@@ -2,7 +2,7 @@
   <h1 align="center">SLOW & FERIOUS</h3>
 
 <p align="center">
-    short description
+    This project is a game where you have to drive a car and go as far as possible
     <br />
     <br />
     <a href="https://erykfryderyk.github.io/slow-and-furious-game/" target="blank">View Demo</a>
